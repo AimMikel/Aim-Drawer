@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Aim Mikel">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Draw Board</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/master.css">
+  <link rel="stylesheet" type="text/css" href="css/default.css">
+</head>
+
+<body>
+  <div class="">
+
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <div class="header flex align-center ln-bottom space-between pd-v">
+      <section class="flex align-center">
+        <button class="box-sm btn far fa-file-plus txt-lg sp-right" title="new"></button>
+        <button class="box-sm btn far fa-file-download txt-lg sp-right" title="download"></button>
+        <button class="box-sm btn far fa-file-export txt-lg sp-right" title="export"></button>
+      </section>
+      <section class="flex align-center">
+        <section class="flex" role="rectangle ellipse">
+          <button class="btn btn-input" role="cancel">Cancel</button>
+          <button class="btn sp-v btn-input" role="apply">Apply</button>
+          <button class="btn btn-input" role="save">Download</button>
+        </section>
+      </section>
+      <section class="flex align-center">
+        <label class="sp-right">Mouse </label>
+        <section class="ln rad flex align-center pd-v cods-res">
+          <label>x:</label>
+          <label id="mouseX">0</label>
+          <label>y:</label>
+          <label id="mouseY">0</label>
+        </section>
+      </section>
+    </div>
+
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <div class="left-pane pd-md">
+      <button class="btn btn-input" role="pen"><i class="fas fa-pen"></i><span>Pencil</span></button>
+      <button class="btn btn-input" role="brush"><i class="fas fa-paint-brush"></i><span>Paint</span></button>
+      <button class="btn btn-input" role="eraser"><i class="fas fa-eraser"></i><span>Eraser</span></button>
+      <button class="btn btn-input" role="select"><i class="fas fa-expand"></i><span>Select</span></button>
+      <button class="btn btn-input" role="rectangle"><i class="far fa-square"></i><span>Rectangle</span></button>
+      <button class="btn btn-input" role="ellipse"><i class="far fa-circle"></i><span>Ellipse</span></button>
+      <button class="btn btn-input" role="line"><i class="far fa-horizontal-rule"></i><span>Line</span></button>
+      <button class="btn btn-input" role="text"><i class="far fa-text"></i><span>Text</span></button>
+      <button class="btn btn-input" role="picture"><i class="far fa-image"></i><span>Picture</span></button>
+      <img src="" class="ln" id="resImg">
+    </div>
+
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <div class="center-pane" id="board">
+      <canvas id="canvas" role="canvas" width="50" height="50"></canvas>
+      <div class="tool" role="select"></div>
+      <div class="tool circle" role="pen"></div>
+      <div class="tool circle" role="brush"></div>
+      <div class="tool ln" role="eraser"></div>
+      <div class="tool" role="rectangle"></div>
+      <div class="tool" role="ellipse"></div>
+      <div class="tool" role="line"></div>
+      <div class="tool flex flex-column ln" role="text">
+        <input type="text" name="text" id="text" placeholder="Text" role="inner">
+        <section class="resizer" role="se"></section>
+      </div>
+      <div class="tool" role="picture"></div>
+    </div>
+
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <div class="right-pane pd-md">
+      <section role="pen brush" class="input-control flex align-center">
+        <label for="type">Type</label>
+        <select id="type" name="type" id="type">
+          <option value="square">Square</option>
+          <option value="round" selected>Round</option>
+        </select>
+      </section>
+      <section role="pen line brush" class="input-control flex align-center">
+        <label for="color">Color</label>
+        <input type="color" name="color" id="color" value="#000000">
+      </section>
+      <section role="text" class="input-control flex align-center">
+        <label for="fontColor">Font Color</label>
+        <input type="color" name="fontColor" id="fontColor" value="#000000">
+      </section>
+      <section role="rectangle ellipse" class="input-control flex align-center">
+        <label for="fill">Fill</label>
+        <select id="fill" name="fill">
+          <option value="color" selected>Color</option>
+          <option value="none">None</option>
+        </select>
+      </section>
+      <section role="rectangle ellipse" class="input-control flex align-center">
+        <label for="fillColor">Fill Color</label>
+        <input type="color" name="fillColor" id="fillColor" value="#ffffff">
+      </section>
+      <section role="pen brush eraser" class="input-control flex align-center">
+        <label for="size">Size</label>
+        <input type="text" name="size" id="size" value="3">
+      </section>
+      <section role="text" class="input-control flex align-center">
+        <label for="size">Font Size</label>
+        <input type="text" name="fontSize" id="fontSize" value="16">
+      </section>
+      <section role="rectangle ellipse" class="input-control flex align-center">
+        <label for="strokeWidth">Stroke Width</label>
+        <input type="text" name="strokeWidth" id="strokeWidth" value="2">
+      </section>
+      <section role="rectangle ellipse" class="input-control flex align-center">
+        <label for="strokeColor">Stroke Color</label>
+        <input type="color" name="strokeColor" id="strokeColor" value="#000000">
+      </section>
+      <section role="select rectangle ellipse line text picture" class="input-control flex align-center">
+        <label for="x">x</label>
+        <input type="text" name="x" id="x" value="20">
+      </section>
+      <section role="select rectangle ellipse line text picture" class="input-control flex align-center">
+        <label for="y">y</label>
+        <input type="text" name="y" id="y" value="20">
+      </section>
+      <section role="select rectangle ellipse line text picture" class="input-control flex align-center">
+        <label for="w">Width</label>
+        <input type="text" name="w" id="w" value="100">
+      </section>
+      <section role="select rectangle ellipse line text picture" class="input-control flex align-center">
+        <label for="h">Height</label>
+        <input type="text" name="h" id="h" value="100">
+      </section>
+      <section role="select rectangle ellipse picture text" class="input-control flex align-center">
+        <label for="dragMode">Drag Mode</label>
+        <select name="dragMode" id="dragMode">
+          <option value="free">Free</option>
+          <option value="canvas" selected>Canvas</option>
+        </select>
+      </section>
+      <section role="select rectangle ellipse picture" class="input-control flex align-center">
+        <label for="snapSize">Snap Size</label>
+        <input type="text" name="snapSize" id="snapSize" value="0">
+      </section>
+      <section role="select rectangle ellipse picture" class="input-control flex align-center">
+        <label for="aspectRatio">Aspect Ratio</label>
+        <input type="text" name="aspectRatio" id="aspectRatio" value="0">
+      </section>
+      <section role="select rectangle ellipse text picture" class="input-control flex align-center">
+        <label for="rotate">Rotate</label>
+        <input type="text" name="rotate" id="rotate" value="0">
+      </section>
+    </div>
+
+    <!-- ------------------------------------------------------------------------------- -->
+
+  </div>
+  <script type="text/javascript" src="js/drawee.js"></script>
+</body>
+
+</html>

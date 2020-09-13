@@ -1,0 +1,298 @@
+/*
+	NAME: AIM-DRAWER
+	AUTHOR: AIM MIKEL;
+	DATE: 13 SEP 2020;
+	LICENSE: MIT;
+*/
+.header{
+	position: fixed;
+	width : 100%;
+	height: 40px;
+	top : 0;
+	left : 0;
+	background: #eee;
+}
+
+.left-pane{
+	position: fixed;
+	top : 40px;
+	bottom : 0;
+	left : 0;
+	width : 150px;
+	border-right: 1px solid #ccc;
+	background: #f9f9f9;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+.right-pane{
+	position: fixed;
+	top : 40px;
+	bottom : 0;
+	right : 0;
+	width : 200px;
+	border-left: 1px solid #ccc;
+	background: #f9f9f9;
+}
+
+.center-pane{
+	position: fixed;
+	top : 40px;
+	bottom : 0;
+	left : 150px;
+	right : 200px;
+	overflow: hidden;
+}
+
+
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.cods-res{
+	height: 25px;
+}
+
+.cods-res label:nth-of-type(even){
+	width : 40px;
+	padding : 0px 5px;
+}
+
+.xGuide{
+	height: 100%;
+	width: 0px;
+	background: transparent;
+	border-left: 1px dashed #aaa;
+	top : 0;
+	left: -2px;
+	z-index: 2;
+}
+
+.yGuide{
+	width: 100%;
+	height: 1px;
+	background: transparent;
+	border-top: 1px dashed #aaa;
+	top : -2px;
+	left: 0;
+	z-index: 2;
+}
+
+.left-pane .btn{
+	justify-content: flex-start;
+	margin-bottom: 5px;
+	height: 30px;
+	width: 100%;
+}
+.left-pane .btn.active{
+	border-color: #0066ff;
+	color : #0066ff;
+	background: rgba(0, 102,255, .3);
+	box-shadow: rgba(0, 102,255, .7) 2px 2px 3px;
+}
+.left-pane .btn i{
+	width : 25px;
+	text-align: center;
+}
+.left-pane .btn span{
+	margin-left: 10px;
+}
+
+*.tool{
+	position: absolute;
+	top : 10px;
+	left : 10px;
+	display: none;
+	transform-origin: center;
+}
+.tool.active{
+	display: block;
+}
+
+.tool[role="fill"]{
+	width : 10px;
+	height: 10px;
+	border-radius: 100%;
+}
+
+
+.tool[role="select"],
+.tool[role="rectangle"],
+.tool[role="ellipse"]{
+	width: 100px;
+	height: 100px;
+	background: transparent;
+	top: 10px;
+	left: 10px;
+	z-index: 2;
+	cursor: move;
+	border : 2px solid #000;
+	outline-offset: -2px;
+}
+.tool[role="select"]{
+	border : 2px solid #000;
+	outline: 2px dashed #fff;
+}
+.tool[role="ellipse"]{
+	border-radius: 100%;
+	outline : 1px dashed #000;
+}
+
+.tool[role="pen"]{
+	width: 3px;
+	height: 3px;
+	background: #000000;
+}
+
+.tool[role="brush"]{
+	width: 20px;
+	height: 20px;
+	background: #000000;
+}
+
+
+.tool[role="eraser"]{
+	width: 20px;
+	height: 20px;
+	background: #ffffff;
+}
+
+.tool[role="text"]{
+	width: 200px;
+	height: 50px;
+	cursor: move;
+}
+.tool[role="text"] input{
+	width : 100%;
+	height: 100%;
+	padding : 0px;
+	cursor: move;
+	font-size: 16px;
+}
+
+
+
+
+
+
+.resizer{
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	background: rgba(0, 102,255, .7);
+}
+.resizer[role="nw"]{
+	top : -7px;
+	left : -7px;
+	cursor: nwse-resize;
+}
+.resizer[role="ne"]{
+	top : -7px;
+	right : -7px;
+	cursor: nesw-resize;
+}
+.resizer[role="se"]{
+	right : -7px;
+	bottom : -7px;
+	cursor: nwse-resize;
+}
+.resizer[role="sw"]{
+	left : -7px;
+	bottom : -7px;
+	cursor: nesw-resize;
+}
+.resizer[role="n"]{
+	top : -7px;
+	left : calc(50% - 6px);
+	cursor: ns-resize;
+}
+.resizer[role="s"]{
+	bottom : -7px;
+	left : calc(50% - 6px);
+	cursor: ns-resize;
+}
+.resizer[role="w"]{
+	left : -7px;
+	top : calc(50% - 6px);
+	cursor: ew-resize;
+}
+.resizer[role="e"]{
+	right : -7px;
+	top : calc(50% - 6px);
+	cursor: ew-resize;
+}
+
+
+
+
+.eraser{
+	position: absolute;;width: 20px;
+	height: 20px;
+	top: 20px;
+	left: 20px;
+	background: transparent;
+	border : 1px solid #ccc;
+	cursor: none;
+	background: #fff;
+}
+
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.input-control{
+	border-radius: 3px;
+	height: 30px;
+	display: none;
+}
+.input-control[role*="select"]{
+
+}
+.input-control.active{
+	display: -webkit-flex;
+	display: flex;
+}
+.input-control label{
+	flex-grow: 1;
+}
+.input-control input{
+	width: 80px;
+	border : 1px solid #ccc;
+	padding : 0px 5px;
+	background: #fff;
+	font-size: 13px;
+	height: 25px;
+}
+.input-control select{
+	height: 25px;
+	border : 1px solid #ccc;
+	font-size: 13px;
+	width: 80px;
+	background: #fff;
+	-webkit-appearance : none;
+}
+.input-control input[type="color"]{
+	padding: 0;
+}
+
+#resImg{
+	width: 100%;
+	height: auto;
+}
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+@media(max-width: 600px){
+	.left-pane,
+	.right-pane{
+		display: none;
+	}
+	.center-pane{
+		left: 0px;
+		right : 0px;
+	}
+}
